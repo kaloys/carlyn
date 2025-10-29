@@ -1,54 +1,70 @@
-/* Scene container adds the 3D perspective */
-.scene {
-  width: 300px;
-  height: 200px;
+/* src/components/flippable-card/FlippableCard.css */
+
+.flip-card {
+  width: 100%;
+  height: 100%;
   perspective: 1000px;
   cursor: pointer;
 }
 
-/* The flipping card */
-.card {
+.flip-card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
+  text-align: center;
+  transition: transform 0.8s ease;
   transform-style: preserve-3d;
-  transition: transform 0.6s;
 }
 
-/* When flipped */
-.card.is-flipped {
+.flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Common face styles */
-.card__face {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 2rem;
   backface-visibility: hidden;
-  border-radius: 10px;
+  overflow: hidden;
+  font-size: 30px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #222;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Front face */
-.card__face--front {
-  background-color: #007bff;
-}
-
-/* Back face */
-.card__face--back {
-  background-color: #dc3545;
   transform: rotateY(180deg);
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  background-color: violet;
+  color: #fff;
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes the image fill the card without distortion */
-  border-radius: 10px;
+/* ✅ Make font smaller on mobile */
+@media (max-width: 768px) {
+  .flip-card-back {
+    font-size: 18px;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card-back {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
 }

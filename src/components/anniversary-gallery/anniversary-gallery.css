@@ -1,0 +1,79 @@
+.row {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: transparent !important;
+}
+
+/* --- Columns --- */
+.swiper-column {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+.description-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 2rem;
+  text-align: center;
+  background-color: transparent !important;
+  font-size: 50px;
+  color: #FFCBCB;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: none;
+  user-select: none;
+}
+
+/* --- Swiper --- */
+.swiper_container {
+  width: 90%;
+  height: 90%;
+  background-color: transparent !important;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  will-change: transform;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column-reverse; /* ✅ stack swiper above description */
+    height: auto; /* let height expand naturally */
+  }
+
+  .swiper-column,
+  .description-column {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    background-color: transparent !important;
+  }
+
+  .description-column {
+    padding: 1.5rem;
+    box-shadow: none;
+    background-color: transparent !important;
+  }
+
+  .swiper_container {
+    width: 100%;
+    height: 40vh; /* smaller but still visible */
+    background-color: transparent !important;
+  }
+}

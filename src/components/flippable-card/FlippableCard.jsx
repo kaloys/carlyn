@@ -1,20 +1,24 @@
-import { useState } from "react"
-import './flippable-card.css'
-import myPhoto from "../../assets/images/test.jpg"
+import { useState } from "react";
+import "./flippable-card.css";
 
-export const FlippableCard = () => {
-const [flipped, setFlipped] = useState(false);
+export const FlippableCard = ({ src, description }) => {
+  const [flipped, setFlipped] = useState(false);
+
+  const handleFlip = () => setFlipped((prev) => !prev);
 
   return (
-    <div className="scene" onClick={() => setFlipped(!flipped)}>
-      <div className={`card ${flipped ? "is-flipped" : ""}`}>
-        <div className="card__face card__face--front" style={{ background: "" }}>
-          <img src={myPhoto} alt='front' className='card-image'/>
+    <div className={`flip-card ${flipped ? "flipped" : ""}`} onClick={handleFlip}>
+      <div className="flip-card-inner">
+        {/* FRONT SIDE */}
+        <div className="flip-card-front">
+          <img src={src} alt="slide" loading="lazy" decoding="async"/>
         </div>
-        <div className="card__face card__face--back">
-          <h2>BACK</h2>
+
+        {/* BACK SIDE */}
+        <div className="flip-card-back">
+          <p>{description}</p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
